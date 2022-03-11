@@ -32,6 +32,7 @@ class Explore extends StatelessWidget {
             child: SizedBox(
               height: 210,
               child: ListView.builder(
+                shrinkWrap: true,
                   itemCount: chair.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {

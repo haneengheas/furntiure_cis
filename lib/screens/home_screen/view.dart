@@ -32,121 +32,120 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             const Category(),
-            SizedBox(
-              height: 250,
-              child: GridView.builder(
-                  // physics: NeverScrollableScrollPhysics(),
-                   shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemCount: items.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DetailsScreen(
-                                      image: items[index]['image'],
-                                      name: items[index]['type'],
-                                      price: items[index]['price'],
-                                      rate: items[index]['rate'],
-                                    )));
-                      },
-                      child: Container(
-                        height: 200,
-                        width: sizeFromWidth(context, 2),
-                        //color: green,
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 5),
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              top: 5,
-                              child: Container(
-                                height: 150,
-                                width: 160,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 5),
-                                decoration: BoxDecoration(
-                                    color: babyBlue,
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      items[index]['type'],
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                          color: green),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text('\$ ' + items[index]['price'],
-                                            style: const TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                                color: green)),
-                                        Row(
-                                          children: [
-                                            const Icon(
-                                              Icons.star,
-                                              color: green,
-                                              size: 15,
-                                            ),
-                                            Text(items[index]['rate'],
-                                                style: const TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: green)),
-                                          ],
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
+            GridView.builder(
+                 physics: NeverScrollableScrollPhysics(),
+                 shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: 5,
+                    crossAxisSpacing: 15,
+                    crossAxisCount: 2),
+                itemCount: items.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailsScreen(
+                                    image: items[index]['image'],
+                                    name: items[index]['type'],
+                                    price: items[index]['price'],
+                                    rate: items[index]['rate'],
+                                  )));
+                    },
+                    child: Container(
+                      height: 200,
+                      width: sizeFromWidth(context, 2),
+                      //color: green,
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 5),
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            top: 5,
+                            child: Container(
+                              height: 150,
+                              width: 160,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              decoration: BoxDecoration(
+                                  color: babyBlue,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    items[index]['type'],
+                                    style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                        color: green),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text('\$ ' + items[index]['price'],
+                                          style: const TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                              color: green)),
+                                      Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.star,
+                                            color: green,
+                                            size: 15,
+                                          ),
+                                          Text(items[index]['rate'],
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: green)),
+                                        ],
+                                      )
+                                    ],
+                                  )
+                                ],
                               ),
                             ),
-                            Positioned(
-                              top: 0,
-                              right: 15,
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: 20,
-                                width: 45,
-                                decoration: BoxDecoration(
-                                    color: green,
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: const Text(
-                                  'New',
-                                  style: TextStyle(color: Colors.white),
-                                ),
+                          ),
+                          Positioned(
+                            top: 0,
+                            right: 15,
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 20,
+                              width: 45,
+                              decoration: BoxDecoration(
+                                  color: green,
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: const Text(
+                                'New',
+                                style: TextStyle(color: Colors.white),
                               ),
                             ),
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                height: 140,
-                                width: sizeFromWidth(context, 3),
-                                decoration: BoxDecoration(
-                                  //color: Colors.red,
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                          'assets/' + items[index]['image'],
-                                        ),
-                                        fit: BoxFit.fitHeight),
-                                    borderRadius: BorderRadius.circular(15)),
-                              ),
-                            )
-                          ],
-                        ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              height: 140,
+                              width: sizeFromWidth(context, 3),
+                              decoration: BoxDecoration(
+                                //color: Colors.red,
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/' + items[index]['image'],
+                                      ),
+                                      fit: BoxFit.fitHeight),
+                                  borderRadius: BorderRadius.circular(15)),
+                            ),
+                          )
+                        ],
                       ),
-                    );
-                  }),
-            )
+                    ),
+                  );
+                })
           ],
         ),
       ),
